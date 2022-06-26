@@ -49,7 +49,6 @@ public class BookingDTO {
                 "userName='" + userName + '\'' +
                 ", status='" + status + '\'' +
                 ", bookingDate=" + bookingDate +
-                ", flights=" + flights +
                 '}';
     }
 }

@@ -40,13 +40,13 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public BookingDTO converter(Booking b) {
-        List<Flight> flightList = b.getFlights();
-        List<FlightDTO> flightDTOS = new ArrayList<>();
-        for (Flight f:flightList) {
-            flightDTO = flights.converter(f);
-            flightDTOS.add(flightDTO);
-        }
-        bookingDTO.setFlights(flightDTOS);
+//        List<Flight> flightList = b.getFlights();
+//        List<FlightDTO> flightDTOS = new ArrayList<>();
+//        for (Flight f:flightList) {
+//            flightDTO = flights.converter(f);
+//            flightDTOS.add(flightDTO);
+//        }
+//        bookingDTO.setFlights(flightDTOS);
         bookingDTO.setUserName(b.getUser().getUserName());
         bookingDTO.setBookingDate(b.getBookingDate());
         bookingDTO.setStatus(b.getStatus());

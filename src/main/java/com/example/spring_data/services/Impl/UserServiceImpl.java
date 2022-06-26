@@ -39,13 +39,13 @@ public class UserServiceImpl implements UserService {
     public void delete(User u){users.delete(u);}
 
     public UserDTO converter(User u){
-        List<Booking> bookingList = u.getBookings();
-        List<BookingDTO> bookingDTOS = new ArrayList<>();
-        for (Booking b:bookingList) {
-            bookingDTO = bookings.converter(b);
-            bookingDTOS.add(bookingDTO);
-        }
-        userDTO.setBookings(bookingDTOS);
+//        List<Booking> bookingList = u.getBookings();
+//        List<BookingDTO> bookingDTOS = new ArrayList<>();
+//        for (Booking b:bookingList) {
+//            bookingDTO = bookings.converter(b);
+//            bookingDTOS.add(bookingDTO);
+//        }
+//        userDTO.setBookings(bookingDTOS);
         userDTO.setUserName(u.getUserName());
         userDTO.setRole(u.getRole());
         userDTO.setFirstName(u.getUserDetails().getFirstName());

@@ -79,7 +79,6 @@ public class UserDTO {
                 ", role='" + role + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", bookings=" + bookings +
                 '}';
     }
 }

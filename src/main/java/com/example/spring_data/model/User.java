@@ -23,7 +23,7 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "theUser")
     private UserDetails userDetails;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Booking> bookings;
 
     public Integer getId() {
