@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 public interface UserDetailsService {
     public UserDetails save(UserDetails u);
-//    public Optional<UserDetails> findById(User u);
+    public Optional<UserDetails> findById(Integer id);
 //    public List<UserDetails> findAll();
 //    public void delete(UserDetails u);
 }

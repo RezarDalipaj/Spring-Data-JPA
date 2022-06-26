@@ -1,5 +1,6 @@
 package com.example.spring_data.services;
 
+import com.example.spring_data.DTO.UserDTO;
 import com.example.spring_data.model.User;
 import org.springframework.stereotype.Service;
 
@@ -10,5 +11,6 @@ public interface UserService {
     public Optional<User> findById(Integer id);
     public List<User> findAll();
     public void delete(User u);
+    public UserDTO converter(User u);
 
 }

@@ -18,9 +18,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails save(UserDetails u){
         return users.save(u);
     }
-//    public Optional<UserDetails> findById(User u){
-//        return users.findById(u);
-//    }
+
+    @Override
+    public Optional<UserDetails> findById(Integer id) {
+        return users.findById(id);
+    }
+
 //    public List<UserDetails> findAll(){
 //        return users.findAll();
 //    }

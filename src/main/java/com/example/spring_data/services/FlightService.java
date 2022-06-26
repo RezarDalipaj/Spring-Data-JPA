@@ -1,5 +1,7 @@
 package com.example.spring_data.services;
 
+import com.example.spring_data.DTO.FlightDTO;
+import com.example.spring_data.DTO.UserDTO;
 import com.example.spring_data.model.Flight;
 import com.example.spring_data.model.User;
 import org.springframework.stereotype.Service;
@@ -11,4 +13,5 @@ public interface FlightService {
     public Optional<Flight> findById(Integer id);
     public List<Flight> findAll();
     public void delete(Flight f);
+    public FlightDTO converter(Flight f);
 }

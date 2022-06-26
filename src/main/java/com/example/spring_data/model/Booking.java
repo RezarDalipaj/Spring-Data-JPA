@@ -18,7 +18,7 @@ public class Booking {
         @ManyToOne
         @JoinColumn(name = "user_id",nullable = false)
         private User user;
-        @ManyToMany
+        @ManyToMany(fetch = FetchType.EAGER)
         @JoinTable(
                 name = "booking_flight",
                 joinColumns = @JoinColumn(name = "booking_id"),

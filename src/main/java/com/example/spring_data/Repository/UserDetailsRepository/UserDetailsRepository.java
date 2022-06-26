@@ -9,5 +9,5 @@ import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 import java.util.Optional;
 @Repository
-public interface UserDetailsRepository extends JpaRepository<UserDetails, User> {
+public interface UserDetailsRepository extends JpaRepository<UserDetails, Integer> {
 }

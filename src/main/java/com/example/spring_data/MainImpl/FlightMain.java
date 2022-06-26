@@ -23,7 +23,7 @@ public class FlightMain {
         List<Flight> flightList = flight.findAll();
         System.out.println("All the flights...\n");
         for (Flight f : flightList) {
-            System.out.println(f);
+            System.out.println(flight.converter(f));
         }
     }
     public void add(){
@@ -75,7 +75,7 @@ public class FlightMain {
         Optional<Flight> flight1 = flight.findById(find);
         if (flight1.isPresent()){
             Flight byId = flight1.get();
-            System.out.println(byId);
+            System.out.println(flight.converter(byId));
         }
         else
             System.out.println("This flight doesnt exist");

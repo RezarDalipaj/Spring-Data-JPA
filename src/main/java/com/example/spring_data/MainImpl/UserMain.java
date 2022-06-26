@@ -28,7 +28,7 @@ public class UserMain {
         List<User> userList = user.findAll();
         System.out.println("All the users...\n");
         for (User us : userList) {
-            System.out.println(us);
+            System.out.println(user.converter(us));
         }
     }
     public User add(){
@@ -79,7 +79,7 @@ public class UserMain {
         Optional<User> user1 = user.findById(find);
         if (user1.isPresent()){
             User byId = user1.get();
-            System.out.println(byId);
+            System.out.println(user.converter(byId));
         }
         else
             System.out.println("This user doesnt exist");

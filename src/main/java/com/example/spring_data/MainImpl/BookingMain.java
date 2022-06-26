@@ -35,7 +35,7 @@ public class BookingMain {
         List<Booking> bookingList = booking.findAll();
         System.out.println("All the bookings...\n");
         for (Booking b : bookingList) {
-            System.out.println(b);
+            System.out.println(booking.converter(b));
         }
     }
     public Booking add(){
@@ -118,7 +118,7 @@ public class BookingMain {
         Optional<Booking> booking1 = booking.findById(find);
         if (booking1.isPresent()){
             Booking byId = booking1.get();
-            System.out.println(byId);
+            System.out.println(booking.converter(byId));
         }
         else
             System.out.println("This booking doesnt exist");

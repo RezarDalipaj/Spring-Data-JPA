@@ -11,7 +11,7 @@ public class UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @OneToOne
-    @JoinColumn(nullable = false, unique = true, name = "userId", referencedColumnName = "id")
+    @JoinColumn(nullable = false, unique = true, name = "user_id", referencedColumnName = "id")
     private User theUser;
     @Column
     private String firstName;

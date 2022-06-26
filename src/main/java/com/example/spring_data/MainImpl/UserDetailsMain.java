@@ -5,6 +5,7 @@ import com.example.spring_data.model.User;
 import com.example.spring_data.model.UserDetails;
 import com.example.spring_data.services.Impl.UserDetailsServiceImpl;
 import com.example.spring_data.services.UserDetailsService;
+import com.example.spring_data.services.UserService;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,10 @@ import java.util.Scanner;
 @Component
 public class UserDetailsMain {
     UserDetailsService userDetail;
-    UserDetailsMain(UserDetailsServiceImpl userDetail){
+    UserService userService;
+    UserDetailsMain(UserDetailsServiceImpl userDetail, UserService userService){
         this.userDetail = userDetail;
+        this.userService = userService;
     }
 //    public void find(){
 ////        UserDetailsService userDetail = new UserDetailsService();
@@ -40,14 +43,27 @@ public class UserDetailsMain {
         String email = read.nextLine();
         System.out.println("Enter the phone number");
         String phone = read.nextLine();
-        UserDetails ud2 = new UserDetails();
-        ud2.setFirstName(fn);
-        ud2.setLastName(ln);
-        ud2.setEmail(email);
-        ud2.setPhoneNumber(phone);
-        ud2.setUser(usser);
-        userDetail.save(ud2);
-        return ud2;
+        Optional<UserDetails> detail= userDetail.findById(usser.getId());
+        if (detail.isPresent()){
+            UserDetails ud2 = detail.get();
+            ud2.setFirstName(fn);
+            ud2.setLastName(ln);
+            ud2.setEmail(email);
+            ud2.setPhoneNumber(phone);
+            ud2.setUser(usser);
+            UserDetails ud1 = userDetail.save(ud2);
+            return ud1;
+        }
+        else {
+            UserDetails ud2 = new UserDetails();
+            ud2.setFirstName(fn);
+            ud2.setLastName(ln);
+            ud2.setEmail(email);
+            ud2.setPhoneNumber(phone);
+            ud2.setUser(usser);
+            userDetail.save(ud2);
+            return ud2;
+        }
     }
 //    public void findId(){
 //        Scanner read = new Scanner(System.in);
