@@ -2,11 +2,13 @@ package com.example.spring_data.services.Impl;
 
 import com.example.spring_data.DTO.FlightDTO;
 import com.example.spring_data.Repository.FlightRepository.FlightRepository;
+import com.example.spring_data.model.Booking;
 import com.example.spring_data.model.Flight;
 import com.example.spring_data.model.User;
 import com.example.spring_data.services.FlightService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 @Service
@@ -33,6 +35,12 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public FlightDTO converter(Flight f1) {
+//        List<Booking> bookingList = f1.getBookings();
+//        List<Integer> bookingIds = new ArrayList<>();
+//        for (Booking b:bookingList) {
+//            bookingIds.add(b.getId());
+//        }
+//        flightDTO.setBookingIds(bookingIds);
         flightDTO.setAirline(f1.getAirline());
         flightDTO.setOrigin(f1.getOrigin());
         flightDTO.setDestination(f1.getDestination());
@@ -40,5 +48,15 @@ public class FlightServiceImpl implements FlightService {
         flightDTO.setDepartureDate(f1.getDepartureDate());
         flightDTO.setArrivalDate(f1.getArrivalDate());
         return flightDTO;
+    }
+
+    @Override
+    public List<Integer> findAllBookings(Integer id) {
+        return flights.findAllById(id);
+    }
+
+    @Override
+    public List<Integer> findAllUsers(int id) {
+        return flights.findAllById(id);
     }
 }

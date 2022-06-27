@@ -4,6 +4,7 @@ import com.example.spring_data.DTO.BookingDTO;
 import com.example.spring_data.DTO.FlightDTO;
 import com.example.spring_data.model.Booking;
 import com.example.spring_data.model.Flight;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,5 +15,6 @@ public interface BookingService {
     public List<Booking> findAll();
     public void delete(Booking u);
     public BookingDTO converter(Booking b);
+    List<Integer> findAllFlights(Integer id);
 
 }

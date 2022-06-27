@@ -7,6 +7,7 @@ import com.example.spring_data.Repository.UserRepository.UserRepository;
 import com.example.spring_data.model.Booking;
 import com.example.spring_data.model.Flight;
 import com.example.spring_data.model.User;
+import com.example.spring_data.model.UserDetails;
 import com.example.spring_data.services.BookingService;
 import com.example.spring_data.services.UserService;
 import org.springframework.stereotype.Service;
@@ -46,6 +47,12 @@ public class UserServiceImpl implements UserService {
 //            bookingDTOS.add(bookingDTO);
 //        }
 //        userDTO.setBookings(bookingDTOS);
+//        List<Booking> bookingList = u.getBookings();
+//        List<Integer> bookingIds = new ArrayList<>();
+//        for (Booking b:bookingList) {
+//            bookingIds.add(b.getId());
+//        }
+//        userDTO.setBookingIds(bookingIds);
         userDTO.setUserName(u.getUserName());
         userDTO.setRole(u.getRole());
         userDTO.setFirstName(u.getUserDetails().getFirstName());
@@ -53,6 +60,36 @@ public class UserServiceImpl implements UserService {
         userDTO.setEmail(u.getUserDetails().getEmail());
         userDTO.setPhoneNumber(u.getUserDetails().getPhoneNumber());
         return userDTO;
+    }
+
+    @Override
+    public List<User> findAllByBookings(Booking b) {
+        return users.findAllByBookings(b);
+    }
+
+    @Override
+    public List<User> findAllByRoleContains(String s) {
+        return users.findAllByRoleContains(s);
+    }
+
+    @Override
+    public List<User> findAllByUserName(String username) {
+        return users.findAllByUserName(username);
+    }
+
+    @Override
+    public User findAllByUserDetails(UserDetails ud) {
+        return users.findAllByUserDetails(ud);
+    }
+
+    @Override
+    public List<Integer> findAllBookings(Integer id) {
+        return users.findAllById(id);
+    }
+
+    @Override
+    public List<Integer> findAllFlights(int id) {
+        return users.findAllById(id);
     }
 
 }

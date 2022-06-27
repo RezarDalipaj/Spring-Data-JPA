@@ -3,6 +3,7 @@ package com.example.spring_data.DTO;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
+import java.util.List;
 
 @Component
 public class FlightDTO {
@@ -12,6 +13,7 @@ public class FlightDTO {
     private String status;
     private Date departureDate;
     private Date arrivalDate;
+    private List<Integer> bookingIds;
 
     public String getAirline() {
         return airline;
@@ -59,6 +61,14 @@ public class FlightDTO {
 
     public void setArrivalDate(Date arrivalDate) {
         this.arrivalDate = arrivalDate;
+    }
+
+    public List<Integer> getBookingIds() {
+        return bookingIds;
+    }
+
+    public void setBookingIds(List<Integer> bookingIds) {
+        this.bookingIds = bookingIds;
     }
 
     @Override

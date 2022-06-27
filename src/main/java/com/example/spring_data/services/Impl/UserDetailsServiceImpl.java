@@ -23,6 +23,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public Optional<UserDetails> findById(Integer id) {
         return users.findById(id);
     }
+    public List<UserDetails> findFirstByFirstName(String fname){
+        return users.findAllByFirstNameContainsIgnoreCase(fname);
+    }
+
+    @Override
+    public List<UserDetails> findFirstByEmail(String email) {
+        return users.findAllByEmailContainsIgnoreCase(email);
+    }
+
+    public List<UserDetails> findFirstByPhoneNumber(String phone){
+        return users.findAllByPhoneNumberContainsIgnoreCase(phone);
+    }
 
 //    public List<UserDetails> findAll(){
 //        return users.findAll();

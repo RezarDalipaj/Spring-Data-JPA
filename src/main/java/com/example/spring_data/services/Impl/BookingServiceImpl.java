@@ -47,9 +47,20 @@ public class BookingServiceImpl implements BookingService {
 //            flightDTOS.add(flightDTO);
 //        }
 //        bookingDTO.setFlights(flightDTOS);
+//        List<Flight> flightList = b.getFlights();
+//        List<Integer> flightIds = new ArrayList<>();
+//        for (Flight f:flightList){
+//            flightIds.add(f.getId());
+//        }
+//        bookingDTO.setFlightIds(flightIds);
         bookingDTO.setUserName(b.getUser().getUserName());
         bookingDTO.setBookingDate(b.getBookingDate());
         bookingDTO.setStatus(b.getStatus());
         return bookingDTO;
+    }
+
+    @Override
+    public List<Integer> findAllFlights(Integer id) {
+        return bookings.findAllById(id);
     }
 }

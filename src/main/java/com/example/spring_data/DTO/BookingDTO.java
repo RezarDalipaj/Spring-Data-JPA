@@ -10,6 +10,7 @@ public class BookingDTO {
     private String status;
     private Date bookingDate;
     private List<FlightDTO> flights;
+    private List<Integer> flightIds;
 
     public String getUserName() {
         return userName;
@@ -41,6 +42,14 @@ public class BookingDTO {
 
     public void setFlights(List<FlightDTO> flights) {
         this.flights = flights;
+    }
+
+    public List<Integer> getFlightIds() {
+        return flightIds;
+    }
+
+    public void setFlightIds(List<Integer> flightIds) {
+        this.flightIds = flightIds;
     }
 
     @Override

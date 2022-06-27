@@ -33,6 +33,10 @@ public class BookingMain {
     public void find(){
 //        BookingService booking = new BookingService();
         List<Booking> bookingList = booking.findAll();
+        if (bookingList.isEmpty()){
+            System.out.println("No bookings yet");
+            return;
+        }
         System.out.println("All the bookings...\n");
         for (Booking b : bookingList) {
             System.out.println(booking.converter(b));
@@ -52,9 +56,20 @@ public class BookingMain {
             read.nextLine();
         }
         System.out.println("Enter the id of the user who booked the flight");
-        int uId = read.nextInt();
+        int uId = 0;
+        try {
+            uId = read.nextInt();
+            read.nextLine();
+        }catch (InputMismatchException e){
+            System.out.println("Id should be a number");
+            read.nextLine();
+        }
 //        UserService user = new UserService();
         Optional<User> userById = user.findById(uId);
+        if (!(userById.isPresent())){
+            System.out.println("Couldnt add booking. Invalid user");
+            return null;
+        }
         System.out.println("The flights of this booking...");
         int result = 0;
 //        FlightService flight = new FlightService();
@@ -79,7 +94,6 @@ public class BookingMain {
                 return null;
             }
         }
-        if (userById.isPresent()){
             User ubyId = userById.get();
             Date date = new Date(System.currentTimeMillis());
             System.out.println("Enter the status");
@@ -88,19 +102,16 @@ public class BookingMain {
             if (bookingById.isPresent()){
                 Booking b1 = bookingById.get();
                 b1=setter(b1,status,date,ubyId,flights);
+                System.out.println("Updated booking with id " + b1.getId());
                 return b1;
             }
             else {
                 Booking b2 = new Booking();
                 b2.setId(null);
                 b2=setter(b2,status,date,ubyId,flights);
+                System.out.println("Added booking with id " + b2.getId());
                 return b2;
             }
-        }
-        else {
-            System.out.println("Couldnt add booking. Invalid user");
-            return null;
-        }
     }
     public void findId(){
         Scanner read = new Scanner(System.in);
@@ -123,6 +134,31 @@ public class BookingMain {
         else
             System.out.println("This booking doesnt exist");
     }
+    public void findAllFlights(){
+        Scanner read = new Scanner(System.in);
+        System.out.println("Enter the booking id from which you want to get the flights");
+        Integer bId = 0;
+        try {
+            bId = read.nextInt();
+            read.nextLine();
+        }catch (InputMismatchException e){
+            System.out.println("Id should be a number");
+            read.nextLine();
+        }
+        Optional<Booking> b1 = booking.findById(bId);
+        if (!(b1.isPresent())){
+            System.out.println("This booking doesnt exist");
+            return;
+        }
+        Booking booking1 = b1.get();
+        List<Integer> flights = booking.findAllFlights(bId);
+        System.out.println("All the flight id-s of this booking\n");
+        int i = 0;
+        for (Integer f:flights) {
+            System.out.println("Flight #"+ (i+1) +" id: " + f);
+            i++;
+        }
+    }
     public void remove(){
         Integer find = 0;
         Scanner read = new Scanner(System.in);
@@ -140,6 +176,7 @@ public class BookingMain {
         if (booking2.isPresent()){
             Booking bdelete = booking2.get();
             booking.delete(bdelete);
+            System.out.println("Deleted booking with id " + bdelete.getId());
         }
         else
             System.out.println("This booking doesnt exist");

@@ -13,6 +13,7 @@ public class UserDTO {
     private String phoneNumber;
     private String email;
     private List<BookingDTO> bookings;
+    private List<Integer> bookingIds;
 
     public String getUserName() {
         return userName;
@@ -68,6 +69,14 @@ public class UserDTO {
 
     public void setBookings(List<BookingDTO> bookings) {
         this.bookings = bookings;
+    }
+
+    public List<Integer> getBookingIds() {
+        return bookingIds;
+    }
+
+    public void setBookingIds(List<Integer> bookingIds) {
+        this.bookingIds = bookingIds;
     }
 
     @Override
